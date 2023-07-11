@@ -23,28 +23,30 @@ $(function () {
   //
 
   // TODO: Add code to apply the past, present, or future class to each time
-  var currentHr = dayjs().format('H');
-
+  var currentHr = dayjs().format('HH');
   $(".time-block").each(function () {
-    var displayHr = $(this).attr('id').split('-')[1];
-    if (displayHr < currentHr) {
-      $(this).find('.description').addClass('past');
-    } else if (displayHr === currentHr) {
-      $(this).find('.description').addClass('present');
-    } else {
-      $(this).find('.description').addClass('future');
-    }
-  })
-  // block by comparing the id to the current hour. HINTS: How can the id
-  // attribute of each time-block be used to conditionally add or remove the
-  // past, present, and future classes? How can Day.js be used to get the
-  // current hour in 24-hour time?
-  //
-  // TODO: Add code to get any user input that was saved in localStorage and set
+  var displayHr = $(this).attr('id').split('-')[1];
+  
+  if (displayHr < currentHr) {
+    $(this).find('.description').addClass('past');
+  } else if (displayHr === currentHr) {
+    $(this).find('.description').addClass('present');
+  } else {
+    $(this).find('.description').addClass('future');
+  }
 
   var textEntry = localStorage.getItem(displayHr);
   var textArea = $(this).find('.description');
   textArea.val(textEntry);
+
+})
+// block by comparing the id to the current hour. HINTS: How can the id
+// attribute of each time-block be used to conditionally add or remove the
+// past, present, and future classes? How can Day.js be used to get the
+// current hour in 24-hour time?
+  //
+  // TODO: Add code to get any user input that was saved in localStorage and set
+
 
   // the values of the corresponding textarea elements. HINT: How can the id
   // attribute of each time-block be used to do this?
